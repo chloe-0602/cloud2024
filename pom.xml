@@ -27,6 +27,7 @@
         <module>seata-account-service2003</module>
         <module>mybatis-generator2024-stu</module>
         <module>cloud-provider-payment8001-stu</module>
+        <module>cloud-consumer-order80-stu</module>
     </modules>
 
     <properties>
