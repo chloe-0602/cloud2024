@@ -2,6 +2,7 @@ package com.atguigu.cloud.controller;
 
 import com.atguigu.cloud.entities.Pay;
 import com.atguigu.cloud.entities.PayDTO;
+import com.atguigu.cloud.resp.ResultData;
 import com.atguigu.cloud.service.PayService;
 import jakarta.annotation.Resource;
 import org.springframework.beans.BeanUtils;
@@ -25,30 +26,39 @@ public class PayController {
     private PayService payService;
 
     @PostMapping(value = "/add")
-    public String addPay(@RequestBody Pay pay){
+    public ResultData addPay(@RequestBody Pay pay){
         System.out.println(pay.toString());
         int i = payService.add(pay);
-        return "成功插入记录，返回值："+i;
+        return ResultData.success("成功插入记录，返回值："+i);
     }
     @DeleteMapping(value = "/del/{id}")
-    public Integer deletePay(@PathVariable("id") Integer id) {
-        return payService.delete(id);
+    public ResultData deletePay(@PathVariable("id") Integer id) {
+        Integer rows = payService.delete(id);
+        return ResultData.success("删除数据： " + rows + "行");
     }
     @PutMapping(value = "/update")
-    public String updatePay(@RequestBody PayDTO payDTO){
+    public ResultData updatePay(@RequestBody PayDTO payDTO){
         Pay pay = new Pay();
         BeanUtils.copyProperties(payDTO, pay);
 
         int i = payService.update(pay);
-        return "成功修改记录，返回值："+i;
+        return ResultData.success("成功修改记录，返回值："+i);
     }
     @GetMapping(value = "/get/{id}")
-    public Pay getById(@PathVariable("id") Integer id){
-        return payService.getById(id);
+    public ResultData getById(@PathVariable("id") Integer id){
+        Pay pay = payService.getById(id);
+        return ResultData.success(pay);
     }
 
     @GetMapping(value = "/getAll")
-    public List<Pay> getAll(){
-        return payService.getAll();
+    public ResultData getAll(){
+        List<Pay> payList = payService.getAll();
+        return ResultData.success(payList);
+    }
+
+    @GetMapping("/error/{id}")
+    public ResultData error(@PathVariable("id") Integer id){
+        if(id == -4) throw new RuntimeException("id不能为负数");
+        return ResultData.fail("201", "saa");
     }
 }
