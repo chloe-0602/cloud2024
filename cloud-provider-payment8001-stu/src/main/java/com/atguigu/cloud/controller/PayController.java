@@ -27,8 +27,9 @@ public class PayController {
     private PayService payService;
 
     @PostMapping(value = "/add")
-    public ResultData addPay(@RequestBody Pay pay) {
-        System.out.println(pay.toString());
+    public ResultData addPay(@RequestBody PayDTO payDTO) {
+        Pay pay = new Pay();
+        BeanUtils.copyProperties(payDTO, pay);
         int i = payService.add(pay);
         return ResultData.success("成功插入记录，返回值：" + i);
     }
