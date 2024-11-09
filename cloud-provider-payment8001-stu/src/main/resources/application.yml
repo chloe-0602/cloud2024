@@ -13,6 +13,13 @@ spring:
     username: root
     password: "000000"
 
+  ####Spring Cloud Consul for Service Discovery
+  cloud:
+    consul:
+      host: localhost
+      port: 8500
+      discovery:
+        service-name: ${spring.application.name}
 # ========================mybatis===================
 mybatis:
   mapper-locations: classpath:mapper/*.xml

@@ -20,7 +20,8 @@ import org.springframework.web.client.RestTemplate;
 public class OrderController {
     @Resource
     private RestTemplate restTemplate;
-    public static final String PAY_URL = "http://localhost:8001";
+//    public static final String PAY_URL = "http://localhost:8001";
+    public static final String PAY_URL = "http://cloud-payment-service";
 
     /**
      * 只能是Get请求

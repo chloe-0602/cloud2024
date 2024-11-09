@@ -18,6 +18,11 @@
     </properties>
 
     <dependencies>
+        <!--SpringCloud consul discovery -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-consul-discovery</artifactId>
+        </dependency>
         <!--SpringBoot通用依赖模块-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
