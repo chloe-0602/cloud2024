@@ -11,6 +11,8 @@ spring:
       config:
         profile-separator: '-' # default value is ","，we update '-'
         format: YAML
+        watch:
+          wait-time: 1
 
   # config/cloud-payment-service/data
   #       /cloud-payment-service-dev/data

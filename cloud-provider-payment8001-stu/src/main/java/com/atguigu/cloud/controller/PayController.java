@@ -71,6 +71,6 @@ public class PayController {
 
     @GetMapping("/get/info")
     public ResultData getInfoByConsul(@Value("${atguigu.info}") String info) {
-        return ResultData.success("Atguigu Iinfo: " + info + "\t" + "port: " + port);
+        return ResultData.success("Atguigu Iinfo: " + info +  "    port: " + port);
     }
 }
