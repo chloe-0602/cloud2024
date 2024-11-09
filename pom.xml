@@ -29,6 +29,7 @@
         <module>cloud-provider-payment8001-stu</module>
         <module>cloud-consumer-order80-stu</module>
         <module>cloud-api-commons-stu</module>
+        <module>cloud-provider-payment8002-stu</module>
     </modules>
 
     <properties>

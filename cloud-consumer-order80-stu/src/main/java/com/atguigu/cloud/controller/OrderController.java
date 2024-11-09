@@ -3,6 +3,7 @@ package com.atguigu.cloud.controller;
 import com.atguigu.cloud.entities.PayDTO;
 import com.atguigu.cloud.resp.ResultData;
 import jakarta.annotation.Resource;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
@@ -58,4 +59,9 @@ public class OrderController {
         return ResultData.success(null);
     }
 
+    @GetMapping("pay/get/info")
+    public ResultData getPayInfoByConsul() {
+        String payInfo = restTemplate.getForObject(PAY_URL + "/pay/get/info", String.class);
+        return ResultData.success(payInfo);
+    }
 }
