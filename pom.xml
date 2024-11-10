@@ -16,6 +16,7 @@
         <module>cloud-api-commons-stu</module>
         <module>cloud-provider-payment8002-stu</module>
         <module>cloud-consumer-feign-order80-stu</module>
+        <module>cloud-gateway9527</module>
     </modules>
 
     <properties>
