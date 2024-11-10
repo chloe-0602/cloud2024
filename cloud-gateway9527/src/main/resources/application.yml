@@ -46,3 +46,4 @@ spring:
             - AddRequestHeader=X-Request-atguigu1,atguiguValue1  # 请求头kv，若一头含有多参则重写一行设置
             - AddRequestHeader=X-Request-atguigu2,atguiguValue2
             - RemoveRequestHeader=sec-fetch-site      # 删除请求头sec-fetch-site 要有这个值 需要使用Google浏览器进行访问
+            - SetRequestHeader=sec-fetch-mode, Blue-updatebychloe # 将请求头sec-fetch-mode对应的值修改为Blue-updatebyzzyy
