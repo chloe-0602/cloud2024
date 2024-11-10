@@ -1,4 +1,4 @@
-package com.atguigu.cloud.predicate;
+package com.atguigu.cloud.mygateway;
 
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
