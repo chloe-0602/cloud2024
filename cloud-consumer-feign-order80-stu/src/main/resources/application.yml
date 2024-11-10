@@ -33,3 +33,10 @@ spring:
           mime-types: text/xml,application/xml,application/json #触发压缩数据类型
         response:
           enabled: true
+logging:
+  level:
+    com:
+      atguigu:
+        cloud:
+          apis:
+            PayFeignApi: debug
