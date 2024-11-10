@@ -22,8 +22,9 @@ spring:
 #            - After=2024-11-10T20:38:20.187164400+08:00[Asia/Shanghai]
 #            - Before=2024-11-10T20:40:20.187164400+08:00[Asia/Shanghai]
 #            - Between=2024-11-10T20:42:20.187164400+08:00[Asia/Shanghai],2024-11-10T20:43:20.187164400+08:00[Asia/Shanghai]
-            - Cookie=username,chloe
-
+#            - Cookie=username,chloe
+#            - Header=X-Request-Id, \d+  # 请求头要有X-Request-Id属性并且值为整数的正则表达式
+            - Host=**.atguigu.com
 
         - id: pay_routh2 #pay_routh2                #路由的ID(类似mysql主键ID)，没有固定规则但要求唯一，建议配合服务名
 #          uri: http://localhost:8001                #匹配后提供服务的路由地址
