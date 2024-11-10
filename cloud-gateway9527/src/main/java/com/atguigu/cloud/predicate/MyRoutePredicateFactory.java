@@ -8,6 +8,8 @@ import org.springframework.stereotype.Component;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.server.ServerWebExchange;
 
+import java.util.Collections;
+import java.util.List;
 import java.util.function.Predicate;
 
 /**
@@ -24,6 +26,10 @@ public class MyRoutePredicateFactory extends AbstractRoutePredicateFactory<MyRou
     public static final String USER_TYPE_KEY = "userType";
     public MyRoutePredicateFactory() {
         super(MyRoutePredicateFactory.Config.class);
+    }
+
+    public List<String> shortcutFieldOrder() {
+        return Collections.singletonList(USER_TYPE_KEY);
     }
 
     @Override
