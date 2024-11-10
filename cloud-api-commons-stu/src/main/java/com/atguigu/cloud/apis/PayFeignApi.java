@@ -49,4 +49,12 @@ public interface PayFeignApi {
      */
     @GetMapping(value = "/pay/circuit/{id}")
     public String myCircuit(@PathVariable("id") Integer id);
+
+    /**
+     * Resillience4J CircuitBreaker的案例演示
+     * @param id
+     * @return
+     */
+    @GetMapping(value = "/pay/bulkhead/{id}")
+    public String myBulkhead(@PathVariable("id") Integer id);
 }
