@@ -26,7 +26,10 @@ spring:
 #            - Header=X-Request-Id, \d+  # 请求头要有X-Request-Id属性并且值为整数的正则表达式
 #            - Host=**.atguigu.com
 #            - RemoteAddr=192.168.50.1/24 # 外部访问我的IP限制，最大跨度不超过32，目前是1~24它们是 CIDR 表示法。
-            - Method=GET,POST
+#            - Method=GET,POST
+            - name: My
+              args:
+                userType: gold
 
         - id: pay_routh2 #pay_routh2                #路由的ID(类似mysql主键ID)，没有固定规则但要求唯一，建议配合服务名
 #          uri: http://localhost:8001                #匹配后提供服务的路由地址
