@@ -41,14 +41,16 @@ spring:
         - id: pay_routh3 #pay_routh3
           uri: lb://cloud-payment-service                #匹配后提供服务的路由地址
           predicates:
-            - Path=/pay/gateway/filter/**              # 断言，路径相匹配的进行路由
+#            - Path=/pay/gateway/filter/**              # 断言，路径相匹配的进行路由
+            - Path=/gateway/filter/**              # 被分拆为: PrefixPath + Path
           filters:
-            - AddRequestHeader=X-Request-atguigu1,atguiguValue1  # 请求头kv，若一头含有多参则重写一行设置
-            - AddRequestHeader=X-Request-atguigu2,atguiguValue2
-            - RemoveRequestHeader=sec-fetch-site      # 删除请求头sec-fetch-site 要有这个值 需要使用Google浏览器进行访问
-            - SetRequestHeader=sec-fetch-mode, Blue-updatebychloe # 将请求头sec-fetch-mode对应的值修改为Blue-updatebyzzyy
-            - AddRequestParameter=customerId,9527001 # 新增请求参数Parameter：k ，v； 如果传过来值，那么就是传过来的值
-            - RemoveRequestParameter=customerName   # 删除url请求参数customerName，你传递过来也是null
-            - AddResponseHeader=X-Response-atguigu, BlueResponse # 新增请求参数X-Response-atguigu并设值为BlueResponse
-            - SetResponseHeader=Date,2099-11-11 # 设置回应头Date值为2099-11-11
-            - RemoveResponseHeader=Content-Type # 将默认自带Content-Type回应属性删除
+            #- AddRequestHeader=X-Request-atguigu1,atguiguValue1  # 请求头kv，若一头含有多参则重写一行设置
+            #- AddRequestHeader=X-Request-atguigu2,atguiguValue2
+            #- RemoveRequestHeader=sec-fetch-site      # 删除请求头sec-fetch-site 要有这个值 需要使用Google浏览器进行访问
+            #- SetRequestHeader=sec-fetch-mode, Blue-updatebychloe # 将请求头sec-fetch-mode对应的值修改为Blue-updatebyzzyy
+            #- AddRequestParameter=customerId,9527001 # 新增请求参数Parameter：k ，v； 如果传过来值，那么就是传过来的值
+            #- RemoveRequestParameter=customerName   # 删除url请求参数customerName，你传递过来也是null
+            #- AddResponseHeader=X-Response-atguigu, BlueResponse # 新增请求参数X-Response-atguigu并设值为BlueResponse
+            #- SetResponseHeader=Date,2099-11-11 # 设置回应头Date值为2099-11-11
+            #- RemoveResponseHeader=Content-Type # 将默认自带Content-Type回应属性删除
+            - PrefixPath=/pay
