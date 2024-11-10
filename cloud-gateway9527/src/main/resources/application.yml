@@ -19,7 +19,8 @@ spring:
           uri: lb://cloud-payment-service                #匹配后提供服务的路由地址
           predicates:
             - Path=/pay/gateway/get/**              # 断言，路径相匹配的进行路由
-            - After=2024-11-10T20:38:20.187164400+08:00[Asia/Shanghai]
+#            - After=2024-11-10T20:38:20.187164400+08:00[Asia/Shanghai]
+            - Before=2024-11-10T20:40:20.187164400+08:00[Asia/Shanghai]
 
 
         - id: pay_routh2 #pay_routh2                #路由的ID(类似mysql主键ID)，没有固定规则但要求唯一，建议配合服务名
