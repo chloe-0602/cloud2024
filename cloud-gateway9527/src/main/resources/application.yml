@@ -45,3 +45,4 @@ spring:
           filters:
             - AddRequestHeader=X-Request-atguigu1,atguiguValue1  # 请求头kv，若一头含有多参则重写一行设置
             - AddRequestHeader=X-Request-atguigu2,atguiguValue2
+            - RemoveRequestHeader=sec-fetch-site      # 删除请求头sec-fetch-site
