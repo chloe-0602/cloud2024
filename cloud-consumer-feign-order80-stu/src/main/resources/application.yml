@@ -20,6 +20,9 @@ spring:
             connectTimeout: 3000
             #读取超时时间
             readTimeout: 3000
-          cloud-payment-service:
-            connectTimeout: 5000
-            readTimeout: 5000
+#          cloud-payment-service:
+#            connectTimeout: 5000
+#            readTimeout: 5000
+      httpclient:
+        hc5:
+          enabled: true
