@@ -42,7 +42,8 @@ spring:
           uri: lb://cloud-payment-service                #匹配后提供服务的路由地址
           predicates:
 #            - Path=/pay/gateway/filter/**              # 断言，路径相匹配的进行路由
-            - Path=/gateway/filter/**              # 被分拆为: PrefixPath + Path
+#            - Path=/gateway/filter/**              # 被分拆为: PrefixPath + Path
+            - Path=/XYZ/abc/{segment}           # 断言，为配合SetPath测试，{segment}的内容最后被SetPath取代
           filters:
             #- AddRequestHeader=X-Request-atguigu1,atguiguValue1  # 请求头kv，若一头含有多参则重写一行设置
             #- AddRequestHeader=X-Request-atguigu2,atguiguValue2
@@ -53,4 +54,5 @@ spring:
             #- AddResponseHeader=X-Response-atguigu, BlueResponse # 新增请求参数X-Response-atguigu并设值为BlueResponse
             #- SetResponseHeader=Date,2099-11-11 # 设置回应头Date值为2099-11-11
             #- RemoveResponseHeader=Content-Type # 将默认自带Content-Type回应属性删除
-            - PrefixPath=/pay
+#            - PrefixPath=/pay
+            - SetPath=/pay/gateway/{segment}  # {segment}表示占位符，你写abc也行但要上下一致
