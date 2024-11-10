@@ -17,9 +17,9 @@ spring:
         config:
           default:
             #连接超时时间
-            connectTimeout: 3000
+            connectTimeout: 20000
             #读取超时时间
-            readTimeout: 3000
+            readTimeout: 20000
 #          cloud-payment-service:
 #            connectTimeout: 5000
 #            readTimeout: 5000
@@ -33,6 +33,12 @@ spring:
           mime-types: text/xml,application/xml,application/json #触发压缩数据类型
         response:
           enabled: true
+      circuitbreaker:
+        enabled: true
+        group:
+          enabled: true #没开分组永远不用分组的配置。精确优先、分组次之(开了分组)、默认最后
+
+# feign日志以什么级别监控哪个接口
 logging:
   level:
     com:
@@ -40,3 +46,26 @@ logging:
         cloud:
           apis:
             PayFeignApi: debug
+
+
+# Resilience4j CircuitBreaker 按照次数：COUNT_BASED 的例子
+#  6次访问中当执行方法的失败率达到50%时CircuitBreaker将进入开启OPEN状态(保险丝跳闸断电)拒绝所有请求。
+#  等待5秒后，CircuitBreaker 将自动从开启OPEN状态过渡到半开HALF_OPEN状态，允许一些请求通过以测试服务是否恢复正常。
+#  如还是异常CircuitBreaker 将重新进入开启OPEN状态；如正常将进入关闭CLOSE闭合状态恢复正常处理请求。
+# 开启列选择：Ctrl+Alt+ Shift
+resilience4j:
+  circuitbreaker:
+    configs:
+      default:
+        failureRateThreshold: 50 #设置50%的调用失败时打开断路器，超过失败请求百分⽐CircuitBreaker变为OPEN状态。
+        slidingWindowType: COUNT_BASED # 滑动窗口的类型
+        slidingWindowSize: 6 #滑动窗⼝的⼤⼩配置COUNT_BASED表示6个请求，配置TIME_BASED表示6秒
+        minimumNumberOfCalls: 6 #断路器计算失败率或慢调用率之前所需的最小样本(每个滑动窗口周期)。如果minimumNumberOfCalls为10，则必须最少记录10个样本，然后才能计算失败率。如果只记录了9次调用，即使所有9次调用都失败，断路器也不会开启。
+        automaticTransitionFromOpenToHalfOpenEnabled: true # 是否启用自动从开启状态过渡到半开状态，默认值为true。如果启用，CircuitBreaker将自动从开启状态过渡到半开状态，并允许一些请求通过以测试服务是否恢复正常
+        waitDurationInOpenState: 5s #从OPEN到HALF_OPEN状态需要等待的时间
+        permittedNumberOfCallsInHalfOpenState: 2 #半开状态允许的最大请求数，默认值为10。在半开状态下，CircuitBreaker将允许最多permittedNumberOfCallsInHalfOpenState个请求通过，如果其中有任何一个请求失败，CircuitBreaker将重新进入开启状态。
+        recordExceptions:
+          - java.lang.Exception
+    instances:
+      cloud-payment-service:
+        baseConfig: default
