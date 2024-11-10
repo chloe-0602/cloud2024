@@ -47,3 +47,5 @@ spring:
             - AddRequestHeader=X-Request-atguigu2,atguiguValue2
             - RemoveRequestHeader=sec-fetch-site      # 删除请求头sec-fetch-site 要有这个值 需要使用Google浏览器进行访问
             - SetRequestHeader=sec-fetch-mode, Blue-updatebychloe # 将请求头sec-fetch-mode对应的值修改为Blue-updatebyzzyy
+            - AddRequestParameter=customerId,9527001 # 新增请求参数Parameter：k ，v； 如果传过来值，那么就是传过来的值
+            - RemoveRequestParameter=customerName   # 删除url请求参数customerName，你传递过来也是null
