@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 /**
  * ClassName: PayController
@@ -51,6 +52,7 @@ public class PayController {
 
     @GetMapping(value = "/get/{id}")
     public ResultData getById(@PathVariable("id") Integer id) {
+        try { TimeUnit.SECONDS.sleep(62); } catch (InterruptedException e) { throw new RuntimeException(e); }
         Pay pay = payService.getById(id);
         return ResultData.success(pay);
     }
