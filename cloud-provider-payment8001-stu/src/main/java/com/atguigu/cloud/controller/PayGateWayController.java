@@ -15,7 +15,7 @@ public class PayGateWayController {
     PayService payService;
 
     @GetMapping(value = "/pay/gateway/get/{id}")
-    public ResultData<Pay> getById(@PathVariable("id") Integer id) {
+    public ResultData getById(@PathVariable("id") Integer id) {
         Pay pay = payService.getById(id);
         return ResultData.success(pay);
     }
