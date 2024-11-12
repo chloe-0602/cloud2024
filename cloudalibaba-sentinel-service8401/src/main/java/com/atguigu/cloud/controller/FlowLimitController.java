@@ -36,6 +36,12 @@ public class FlowLimitController {
         flowLimitService.common();
         return "------testD";
     }
+
+    @GetMapping("/testE")
+    public String testE() {
+        System.out.println(System.currentTimeMillis() + "      testE,排队等待");
+        return "------testE";
+    }
 }
  
 
