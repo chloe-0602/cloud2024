@@ -68,6 +68,20 @@ public class FlowLimitController {
         return "------testG,新增熔断规则-异常比例 ";
     }
 
+    /**
+     * 新增熔断规则-异常数
+     * @return
+     */
+    @GetMapping("/testH")
+    public String testH()
+    {
+        System.out.println("----测试:新增熔断规则-异常数 ");
+        int age = 10/0;
+        return "------testH,新增熔断规则-异常数 ";
+    }
+
+
+
 }
  
 
