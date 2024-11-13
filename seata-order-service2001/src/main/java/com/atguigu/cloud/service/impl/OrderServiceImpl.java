@@ -47,7 +47,8 @@ public class OrderServiceImpl implements OrderService {
 
         Order orderFromDB = null;
         if (rows > 0) {
-            orderFromDB = orderMapper.selectByPrimaryKey(order.getId());
+//            orderFromDB = orderMapper.selectByPrimaryKey(order.getId());
+            orderFromDB = orderMapper.selectOne(order);
             log.info("-------> 新建订单成功，orderFromDB info: "+orderFromDB);
             System.out.println();
 

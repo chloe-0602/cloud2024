@@ -1,12 +1,16 @@
 package com.atguigu.cloud.entities;
 
+import lombok.ToString;
+
 import javax.persistence.*;
+import java.io.Serializable;
 
 /**
  * 表名：t_account
 */
 @Table(name = "t_account")
-public class Account {
+@ToString
+public class Account implements Serializable {
     /**
      * id
      */
